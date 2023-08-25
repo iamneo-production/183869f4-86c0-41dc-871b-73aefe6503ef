@@ -14,7 +14,7 @@ import com.hackathon.transactionservice.service.TransactionService;
 @RequestMapping(value = "/api/v1/transaction")
 public class TransactionController {
 
-@Autowired
+    @Autowired
     TransactionService transactionService;
 
     @PostMapping(value = "")
