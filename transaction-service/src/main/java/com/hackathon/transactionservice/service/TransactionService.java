@@ -37,7 +37,7 @@ public class TransactionService {
 
     public String creditDebitAmount(double amount){
         SenderBalance = SenderBalance - amount;
-        ReceiverBalance = ReceiverBalance - amount;
+        ReceiverBalance = ReceiverBalance + amount;
         return "OK";
     }
 
