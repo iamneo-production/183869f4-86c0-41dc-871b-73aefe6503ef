@@ -12,6 +12,9 @@ import com.hackathon.transactionservice.repository.TransactionRepository;
 @Service
 public class TransactionService {
 
+    double SenderBalance = 500000.00;
+    double ReceiverBalance = 45000.00;
+
     @Autowired
     private TransactionRepository transactionRepository;
 
@@ -24,14 +27,18 @@ public class TransactionService {
                 .trans_type(transactionDto.getTrans_type())
                 .date(currentDateTime)
                 .amount(transactionDto.getAmount())
-                .currency(transactionDto.getCurrency())
-                .created_at(currentDateTime)
+                .created_at(LocalDateTime.now())
                 .build();
-
+        creditDebitAmount(transactionDto.getAmount());
         transactionRepository.save(transaction);
-
+        
         return transaction;
     }
 
+    public String creditDebitAmount(double amount){
+        SenderBalance = SenderBalance - amount;
+        ReceiverBalance = ReceiverBalance - amount;
+        return "OK";
+    }
 
 }

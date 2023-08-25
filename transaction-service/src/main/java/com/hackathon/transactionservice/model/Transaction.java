@@ -33,7 +33,7 @@ public class Transaction {
 
     private double amount ;
 
-    private String currency;
+    //private String currency;
 
     private LocalDateTime created_at;
 
