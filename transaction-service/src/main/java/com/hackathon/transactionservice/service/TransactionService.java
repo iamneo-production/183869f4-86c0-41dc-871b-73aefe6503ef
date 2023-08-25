@@ -35,10 +35,10 @@ public class TransactionService {
         return transaction;
     }
 
-    public String creditDebitAmount(double amount){
+    public void creditDebitAmount(double amount){
         SenderBalance = SenderBalance - amount;
         ReceiverBalance = ReceiverBalance + amount;
-        return "OK";
+        System.out.println("Sender : "+SenderBalance+ " ,Receiver : " + ReceiverBalance);
     }
 
 }
