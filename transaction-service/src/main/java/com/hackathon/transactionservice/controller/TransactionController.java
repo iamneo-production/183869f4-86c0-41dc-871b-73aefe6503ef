@@ -17,7 +17,7 @@ public class TransactionController {
     @Autowired
     TransactionService transactionService;
 
-    @PostMapping(value = "")
+    @PostMapping()
     public Transaction add(@RequestBody TransactionDto transactionDto){
         Transaction transaction = transactionService.transferAmount(transactionDto);
         return transaction;
