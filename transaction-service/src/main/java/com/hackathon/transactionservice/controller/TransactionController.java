@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackathon.transactionservice.dto.TransactionDto;
-import com.hackathon.transactionservice.model.Transaction;
 import com.hackathon.transactionservice.service.TransactionService;
 
 @RestController
@@ -18,9 +17,8 @@ public class TransactionController {
     TransactionService transactionService;
 
     @PostMapping()
-    public Transaction add(@RequestBody TransactionDto transactionDto){
-        Transaction transaction = transactionService.transferAmount(transactionDto);
-        return transaction;
+    public TransactionDto add(@RequestBody TransactionDto transactionDto){
+       return transactionService.transferAmount(transactionDto);
     } 
 
 
