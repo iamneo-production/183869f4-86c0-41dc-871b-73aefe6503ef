@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.hackathon.transactionservice.utill.Transformer;
+import com.hackathon.transactionservice.util.Transformer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

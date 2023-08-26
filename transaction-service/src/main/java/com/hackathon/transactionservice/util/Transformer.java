@@ -1,4 +1,4 @@
-package com.hackathon.transactionservice.utill;
+package com.hackathon.transactionservice.util;
 
 import org.springframework.beans.BeanUtils;
 

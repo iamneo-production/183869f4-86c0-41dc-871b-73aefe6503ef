@@ -2,7 +2,7 @@ package com.hackathon.transactionservice.dto;
 
 import java.time.LocalDateTime;
 
-import com.hackathon.transactionservice.utill.Transformer;
+import com.hackathon.transactionservice.util.Transformer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
