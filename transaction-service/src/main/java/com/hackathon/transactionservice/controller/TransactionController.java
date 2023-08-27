@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import com.hackathon.transactionservice.dto.TransactionDto;
 import com.hackathon.transactionservice.service.TransactionService;
+
+
 
 @RestController
 @RequestMapping(value = "/api/v1/transaction")
@@ -30,7 +34,11 @@ public class TransactionController {
         System.out.println(customerId);
         return ResponseEntity.ok(transactionService.getByCustomerID(customerId));
     }
-
+   
+    @GetMapping()
+    public ResponseEntity<List<TransactionDto>> getTransactions() {
+        return ResponseEntity.ok(transactionService.getCustomers());
+    }
 
 
 }
