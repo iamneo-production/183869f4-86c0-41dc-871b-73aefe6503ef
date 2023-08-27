@@ -3,7 +3,7 @@ package com.bfsi.rulesservice.dto;
 import lombok.Data;
 
 @Data
-public class TransactionRequest {
+public class TransactionDto {
     private int id;
 
     private int customer_id;

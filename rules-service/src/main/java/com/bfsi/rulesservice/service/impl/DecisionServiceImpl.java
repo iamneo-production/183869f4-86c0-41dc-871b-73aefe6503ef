@@ -5,7 +5,7 @@ import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bfsi.rulesservice.dto.TransactionRequest;
+import com.bfsi.rulesservice.dto.TransactionDto;
 import com.bfsi.rulesservice.service.DecisionService;
 
 @Service
@@ -18,7 +18,7 @@ public class DecisionServiceImpl implements DecisionService{
 
 
 	@Override
-	public TransactionRequest checkTransactionFraud(TransactionRequest transactionRequest) {
+	public TransactionDto checkTransactionFraud(TransactionDto transactionRequest) {
 		
 		KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(transactionRequest);
