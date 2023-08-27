@@ -1,9 +1,9 @@
 package com.bfsi.rulesservice.service;
 
-import com.bfsi.rulesservice.dto.TransactionRequest;
+import com.bfsi.rulesservice.dto.TransactionDto;
 
 public interface DecisionService {
     
-    TransactionRequest checkTransactionFraud(TransactionRequest transactionRequest);
+    TransactionDto checkTransactionFraud(TransactionDto transactionRequest);
 
 }
