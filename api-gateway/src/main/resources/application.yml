@@ -24,13 +24,41 @@ spring:
   cloud:
     gateway:
       routes:
+      # Auth Service Route
+      - id: Auth-Service
+        uri: lb://Auth-Service
+        predicates:
+          - Path=/auth/**
+      # Behavior Analysis Service Route
+      - id: behavior-analysis-service
+        uri: lb://behavior-analysis-service
+        predicates:
+          - Path=/api/behaviroal-analys
+      # Notification Service Route
+      - id: notification-service
+        uri: lb://notification-service
+        predicates:
+          - Path=/api/notification
+      # Rules Service Route
+      - id: rules-service
+        uri: lb://transaction-fraud
+        predicates:
+          - Path=/api/v1/transaction-fraud
+      # Transaction Monitoring Service Route
+      - id: transaction-monitoring-service
+        uri: lb://transaction-monitoring-service
+#        predicates:
+#          - Path=/
+      # Transaction Service Route
+      - id: Transaction-Service
+        uri: lb://Transaction-Service
+        predicates:
+          - Path=/api/v1/transaction
       # User Service Route
       - id: user-service
         uri: lb://booking-service
         predicates:
-        - Path=/api/v1/bookings/**
-
-  
+          - Path=/api/v1/bookings/**
       # Discovery Server Route
       - id: discovery-service
         uri: http://localhost:8761

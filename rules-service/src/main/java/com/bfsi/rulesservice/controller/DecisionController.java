@@ -18,7 +18,7 @@ public class DecisionController {
         this.kieContainer = kieContainer;
     }
 
-    @PostMapping("/transaction.drl-fraud")
+    @PostMapping("/transaction-fraud")
     private TransactionRequest checkTransactionFraud(@RequestBody TransactionRequest transactionRequest) {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(transactionRequest);
