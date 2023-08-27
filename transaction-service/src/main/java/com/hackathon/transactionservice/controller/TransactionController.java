@@ -30,7 +30,7 @@ public class TransactionController {
     } 
 
     @GetMapping("{customerId}")
-    public ResponseEntity<TransactionDto> getTransactionsByCustomerID(@PathVariable int customerId) {
+    public ResponseEntity<List<TransactionDto>> getTransactionsByCustomerID(@PathVariable int customerId) {
         System.out.println(customerId);
         return ResponseEntity.ok(transactionService.getByCustomerID(customerId));
     }

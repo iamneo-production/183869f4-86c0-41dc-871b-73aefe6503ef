@@ -49,9 +49,11 @@ public class TransactionService {
     
     }
 
-    public TransactionDto getByCustomerID(int customerId) {
-		return transactionRepository.findByCustomerId(customerId).orElse(null)
-        .toDto(TransactionDto.class);
+    public List<TransactionDto> getByCustomerID(int customerId) {
+		return transactionRepository.findByCustomerId(customerId)
+        .stream()
+        .map(transaction -> transaction.toDto(TransactionDto.class))
+        .collect(Collectors.toList());
 	}
 
     public List<TransactionDto> getCustomers() {
