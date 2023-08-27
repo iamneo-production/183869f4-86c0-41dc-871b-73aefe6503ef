@@ -1,28 +1,27 @@
 package com.peirisabhi.behavioranalysisservice.dto;
 
-import java.util.Date;
-
 import com.peirisabhi.behavioranalysisservice.util.Transformer;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
+@Builder
 @ToString
-public class BehavioralDetectionDto implements Transformer{
-    
+public class NotificationDto implements Transformer{
+
     private int id;
 
     private int customer_id;
 
+    private int trans_id;
+
     private String trans_type;
 
-    private Date date;
+    private String date;
 
     private double amount;
 
-    private String detectedBehavior;
-
-    private Date createdAt;
-
+    private String notificationType;
 }

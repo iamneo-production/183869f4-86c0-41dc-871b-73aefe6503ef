@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.peirisabhi.behavioranalysisservice.util.Transformer;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class BehavioralDetection {
+public class BehavioralDetection implements Transformer{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
