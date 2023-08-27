@@ -1,6 +1,7 @@
 package com.hackathon.transactionservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,7 @@ public class TransactionController {
 
     @PostMapping()
     public ResponseEntity<TransactionDto> add(@RequestBody TransactionDto transactionDto){
-       return ResponseEntity.ok(transactionService.transferAmount(transactionDto));
+       return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.transferAmount(transactionDto));
     } 
 
     @GetMapping("{customerID}")
