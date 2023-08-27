@@ -47,8 +47,8 @@ public class TransactionService {
     
     }
 
-    public TransactionDto getByCustomerID(String customerId) {
-		return transactionRepository.findByCustomerID(customerId).orElse(null)
+    public TransactionDto getByCustomerID(int customerId) {
+		return transactionRepository.findByCustomerId(customerId).orElse(null)
         .toDto(TransactionDto.class);
 	}
 

@@ -25,10 +25,10 @@ public class TransactionController {
        return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.transferAmount(transactionDto));
     } 
 
-    @GetMapping("{customerID}")
-    public ResponseEntity<TransactionDto> getByCustomerID(@PathVariable String customerID) {
-        System.out.println(customerID);
-        return ResponseEntity.ok(transactionService.getByCustomerID(customerID));
+    @GetMapping("/{customer_id}")
+    public ResponseEntity<TransactionDto> getTransactionsByCustomerID(@PathVariable int customer_id) {
+        System.out.println(customer_id);
+        return ResponseEntity.ok(transactionService.getByCustomerID(customer_id));
     }
 
 

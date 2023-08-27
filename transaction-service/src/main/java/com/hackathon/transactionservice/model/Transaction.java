@@ -27,7 +27,7 @@ public class Transaction implements Transformer{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int customer_id;
+    private int customerId;
 
     private String trans_type;
 

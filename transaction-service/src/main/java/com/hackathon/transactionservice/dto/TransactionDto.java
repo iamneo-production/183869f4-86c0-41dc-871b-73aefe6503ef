@@ -17,7 +17,7 @@ public class TransactionDto implements Transformer {
 
     private int id;
 
-    private int customer_id;
+    private int customerId;
 
     private String trans_type;
 
