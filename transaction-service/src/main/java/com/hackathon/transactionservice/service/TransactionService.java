@@ -1,13 +1,15 @@
 package com.hackathon.transactionservice.service;
 
 import java.time.LocalDateTime;
-
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hackathon.transactionservice.dto.TransactionDto;
 import com.hackathon.transactionservice.model.Transaction;
 import com.hackathon.transactionservice.repository.TransactionRepository;
+
+import java.util.List;
 
 @Service
 public class TransactionService {
@@ -47,6 +49,20 @@ public class TransactionService {
     
     }
 
+    public List<TransactionDto> getByCustomerID(int customerId) {
+		return transactionRepository.findByCustomerId(customerId)
+        .stream()
+        .map(transaction -> transaction.toDto(TransactionDto.class))
+        .collect(Collectors.toList());
+	}
+
+    public List<TransactionDto> getCustomers() {
+		
+        return transactionRepository.findAll()
+        .stream()
+        .map(transaction -> transaction.toDto(TransactionDto.class))
+        .collect(Collectors.toList());
+	}
 
     public void creditDebitAmount(double amount){
         SenderBalance = SenderBalance - amount;

@@ -2,7 +2,7 @@ package com.hackathon.transactionservice.dto;
 
 import java.time.LocalDateTime;
 
-import com.hackathon.transactionservice.utill.Transformer;
+import com.hackathon.transactionservice.util.Transformer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +17,7 @@ public class TransactionDto implements Transformer {
 
     private int id;
 
-    private int customer_id;
+    private int customerId;
 
     private String trans_type;
 

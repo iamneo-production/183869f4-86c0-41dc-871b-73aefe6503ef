@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.hackathon.transactionservice.utill.Transformer;
+import com.hackathon.transactionservice.util.Transformer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +27,7 @@ public class Transaction implements Transformer{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private int customer_id;
+    private int customerId;
 
     private String trans_type;
 
