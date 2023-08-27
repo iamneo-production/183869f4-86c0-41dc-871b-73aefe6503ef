@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import com.bfsi.rulesservice.util.Transformer;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class RuleTrigger implements Transformer {
 
     @Id
