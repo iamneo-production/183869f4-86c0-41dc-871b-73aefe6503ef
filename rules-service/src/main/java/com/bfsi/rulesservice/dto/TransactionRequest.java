@@ -18,5 +18,5 @@ public class TransactionRequest {
 
     private String created_at;
 
-    private Boolean fraud_status;
+    private boolean fraud;
 }
