@@ -47,6 +47,10 @@ public class TransactionService {
     
     }
 
+    public TransactionDto getByCustomerID(String customerId) {
+		return transactionRepository.findByCustomerID(customerId).orElse(null)
+        .toDto(TransactionDto.class);
+	}
 
     public void creditDebitAmount(double amount){
         SenderBalance = SenderBalance - amount;
