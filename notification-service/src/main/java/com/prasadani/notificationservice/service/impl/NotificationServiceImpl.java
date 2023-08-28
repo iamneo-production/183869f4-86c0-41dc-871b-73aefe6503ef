@@ -33,12 +33,12 @@ public class NotificationServiceImpl implements NotificationService{
 
 
         Notification notification = new Notification();
-        notification.setCoustomer_id(notificationDto.getCoustomer_id());
+        notification.setCoustomer_id(notificationDto.getCustomer_id());
         notification.setTrans_id(notificationDto.getTrans_id());
         notification.setDate(notificationDto.getDate());
         notification.setAmount(notificationDto.getAmount());
-        notification.setCreated_at(notificationDto.getCreated_at());
-        notification.setNotification_type(notificationDto.getNotification_type());
+        // notification.setCreated_at(notificationDto.getC());
+        notification.setNotification_type(notificationDto.getNotificationType());
 
         log.info("Data Last {}", notification);
 
@@ -58,12 +58,12 @@ public class NotificationServiceImpl implements NotificationService{
     private NotificationDto convertToDto(Notification notification) {
         NotificationDto dto = new NotificationDto();
         dto.setId(notification.getId());
-        dto.setCoustomer_id(notification.getCoustomer_id());
+        dto.setCustomer_id(notification.getCoustomer_id());
         dto.setTrans_id(notification.getTrans_id());
         dto.setDate(notification.getDate());
         dto.setAmount(notification.getAmount());
-        dto.setCreated_at(notification.getCreated_at());
-        dto.setNotification_type(notification.getNotification_type());
+        // dto.setCreated_at(notification.getCreated_at());
+        dto.setNotificationType(notification.getNotification_type());
         return dto;
     }
 }
