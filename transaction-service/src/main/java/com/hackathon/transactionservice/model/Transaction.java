@@ -35,7 +35,7 @@ public class Transaction implements Transformer{
 
     private double amount ;
 
-    //private String currency;
+    private String zip_code;
 
     private LocalDateTime created_at;
 
