@@ -3,6 +3,7 @@ package com.peirisabhi.behavioranalysisservice.service.impl;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import com.peirisabhi.behavioranalysisservice.entity.BehavioralDetection;
 import com.peirisabhi.behavioranalysisservice.producer.NotificationProducer;
 import com.peirisabhi.behavioranalysisservice.repository.BehavioralDetectionRepository;
 import com.peirisabhi.behavioranalysisservice.service.BehavioralDetectionService;
+
+import io.github.resilience4j.retry.annotation.Retry;
 
 @Service
 public class BehavioralDetectionServiceImpl implements BehavioralDetectionService {
@@ -33,7 +36,8 @@ public class BehavioralDetectionServiceImpl implements BehavioralDetectionServic
 
 		BehavioralDetectionDto behavioralDetectionDto = null;
 
-		// List<TransactionDto> customerTransactionList = transactionClient.getTransactionByCustomer(transactionDto.getCustomer_id()+"");
+		// @Retry(fallbackMethod = "getAllTransactions", name = "behavior-analysis-service")
+		List<TransactionDto> customerTransactionList = transactionClient.getTransactionByCustomer(transactionDto.getCustomer_id()+"");
 
 		// long count = customerTransactionList.stream()
 		// .filter(ct -> ct.getZip_code() == transactionDto.getZip_code())
@@ -79,5 +83,14 @@ public class BehavioralDetectionServiceImpl implements BehavioralDetectionServic
 
 		return behavioralDetections;
 	}
+
+
+	public List<TransactionDto> getAllTransactions(Exception e){
+        return Stream.of(
+                new TransactionDto(119, 12, "withdrawal", "2023/02/12", 45000, "", "11500"),
+                new TransactionDto(119, 12, "withdrawal", "2023/02/12", 45000, "", "11500"),
+                new TransactionDto(119, 12, "withdrawal", "2023/02/12", 45000, "", "11500")
+        ).collect(Collectors.toList());
+    }
 
 }
