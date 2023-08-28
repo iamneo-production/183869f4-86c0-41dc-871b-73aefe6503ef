@@ -20,4 +20,6 @@ public class TransactionDto implements Transformer{
     private double amount;
 
     private String created_at;
+
+    private String zip_code;
 }

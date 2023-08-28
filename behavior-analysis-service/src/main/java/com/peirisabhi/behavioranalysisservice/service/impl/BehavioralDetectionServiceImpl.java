@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.peirisabhi.behavioranalysisservice.client.TransactionClient;
 import com.peirisabhi.behavioranalysisservice.dto.BehavioralDetectionDto;
 import com.peirisabhi.behavioranalysisservice.dto.NotificationDto;
 import com.peirisabhi.behavioranalysisservice.dto.TransactionDto;
@@ -24,10 +25,21 @@ public class BehavioralDetectionServiceImpl implements BehavioralDetectionServic
 	@Autowired
 	BehavioralDetectionRepository behavioralDetectionRepository;
 
+	@Autowired
+	TransactionClient transactionClient; 
+
 	@Override
 	public BehavioralDetectionDto checkTransaction(TransactionDto transactionDto) {
 
 		BehavioralDetectionDto behavioralDetectionDto = null;
+
+		// List<TransactionDto> customerTransactionList = transactionClient.getTransactionByCustomer(transactionDto.getCustomer_id()+"");
+
+		// long count = customerTransactionList.stream()
+		// .filter(ct -> ct.getZip_code() == transactionDto.getZip_code())
+		// .count();
+
+		// System.out.println(count);
 
 		if (true) {
 
