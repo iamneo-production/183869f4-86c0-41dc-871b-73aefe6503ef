@@ -8,26 +8,28 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class TransactionDto implements Transformer {
 
     private int id;
 
-    private int customerId;
+    private int customer_id;
 
     private String trans_type;
 
-    private LocalDateTime date;
+    private String date;
 
     private double amount ;
 
     //private String currency;
 
-    private LocalDateTime created_at;
+    private String created_at;
 
              
 

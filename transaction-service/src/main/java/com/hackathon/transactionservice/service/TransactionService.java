@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hackathon.transactionservice.dto.TransactionDto;
 import com.hackathon.transactionservice.model.Transaction;
+import com.hackathon.transactionservice.producer.TransactionProducer;
 import com.hackathon.transactionservice.repository.TransactionRepository;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class TransactionService {
 
     @Autowired
     private TransactionRepository transactionRepository;
+
+    @Autowired
+    TransactionProducer transactionProducer;
 
 
     // public Transaction transferAmount(TransactionDto transactionDto){
@@ -39,21 +43,25 @@ public class TransactionService {
 
 
 
-    public TransactionDto transferAmount(TransactionDto transactionDto){
+    public TransactionDto saveTransaction(TransactionDto transactionDto){
 
         LocalDateTime currentDateTime = LocalDateTime.now();
         Transaction transaction = transactionDto.toEntity(Transaction.class);
         transaction.setDate(currentDateTime);
         transaction.setCreated_at(LocalDateTime.now());
+
+        transactionProducer.sendMessage(transactionDto);
+
         return transactionRepository.save(transaction).toDto(TransactionDto.class);
     
     }
 
     public List<TransactionDto> getByCustomerID(int customerId) {
-		return transactionRepository.findByCustomerId(customerId)
-        .stream()
-        .map(transaction -> transaction.toDto(TransactionDto.class))
-        .collect(Collectors.toList());
+		// return transactionRepository.findByCustomer_id(customerId)
+        // .stream()
+        // .map(transaction -> transaction.toDto(TransactionDto.class))
+        // .collect(Collectors.toList());
+        return null;
 	}
 
     public List<TransactionDto> getCustomers() {

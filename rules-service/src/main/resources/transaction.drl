@@ -1,0 +1,15 @@
+import com.bfsi.rulesservice.dto.TransactionDto;
+
+rule "Transaction for CARD payment above 100000"
+    when
+        orderObject : TransactionDto( trans_type=="deposit" && amount > 100000 );
+    then
+        orderObject.setFraud(true);
+end;
+
+rule "Transaction for CARD withdrawal below 10000"
+    when
+        orderObject : TransactionDto( trans_type=="withdrawal" && amount > 10000 );
+    then
+        orderObject.setFraud(true);
+end;
