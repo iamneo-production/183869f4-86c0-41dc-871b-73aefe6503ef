@@ -45,8 +45,8 @@ spring:
         predicates:
           - Path=/api/v1/transaction-fraud
       # Transaction Monitoring Service Route
-      - id: transaction-monitoring-service
-        uri: lb://transaction-monitoring-service
+#      - id: transaction-monitoring-service
+#        uri: lb://transaction-monitoring-service
 #        predicates:
 #          - Path=/
       # Transaction Service Route
@@ -56,9 +56,9 @@ spring:
           - Path=/api/v1/transaction
       # User Service Route
       - id: user-service
-        uri: lb://booking-service
+        uri: lb://user-service
         predicates:
-          - Path=/api/v1/bookings/**
+          - Path=/api/v1/user/**
       # Discovery Server Route
       - id: discovery-service
         uri: http://localhost:8080
@@ -71,16 +71,16 @@ spring:
         uri: http://localhost:8080
         predicates:
         - Path=/eureka/**
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri=http://localhost:8180/auth/realms/ticket-digi-realm:
-  zipkin:
-    base-url: http://localhost:9411
-  sleuth:
-    sampler:
-      probability: 1.0
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri=http://localhost:8180/auth/realms/ticket-digi-realm:
+#  zipkin:
+#    base-url: http://localhost:9411
+#  sleuth:
+#    sampler:
+#      probability: 1.0
 
 management:
   endpoints:

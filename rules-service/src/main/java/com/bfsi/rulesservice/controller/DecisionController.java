@@ -1,6 +1,6 @@
 package com.bfsi.rulesservice.controller;
 
-import com.bfsi.rulesservice.dto.TransactionRequest;
+import com.bfsi.rulesservice.dto.TransactionDto;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class DecisionController {
     }
 
     @PostMapping("/transaction-fraud")
-    private TransactionRequest checkTransactionFraud(@RequestBody TransactionRequest transactionRequest) {
+    private TransactionDto checkTransactionFraud(@RequestBody TransactionDto transactionRequest) {
         KieSession kieSession = kieContainer.newKieSession();
         kieSession.insert(transactionRequest);
         kieSession.fireAllRules();

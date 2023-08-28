@@ -3,7 +3,7 @@ package com.bfsi.rulesservice.dto;
 import lombok.Data;
 
 @Data
-public class TransactionRequest {
+public class TransactionDto {
     private int id;
 
     private int customer_id;
@@ -18,5 +18,5 @@ public class TransactionRequest {
 
     private String created_at;
 
-    private Boolean fraud_status;
+    private boolean fraud;
 }
