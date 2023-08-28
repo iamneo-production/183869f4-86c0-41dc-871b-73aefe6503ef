@@ -1,6 +1,8 @@
 package com.hackathon.authservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,26 +28,41 @@ public class AuthController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping("/register")
-    public String addNewUser(@RequestBody User user) {
-        return service.saveUser(user);
+    public ResponseEntity<String> addNewUser(@RequestBody User user) {
+        try{
+            return new ResponseEntity<>(service.saveUser(user), HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>("User adding failed!", HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/token")
-    public String getToken(@RequestBody AuthenticationDto authRequest) {
-        System.out.println(authRequest.toString());
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
-        System.out.println(authenticate.isAuthenticated());
-        if (authenticate.isAuthenticated()) {
-            return service.generateToken(authRequest.getUsername());
-        } else {
-            throw new RuntimeException("invalid access");
+    public ResponseEntity<String> getToken(@RequestBody AuthenticationDto authRequest) {
+        try{
+            System.out.println(authRequest.toString());
+            Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+            System.out.println(authenticate.isAuthenticated());
+            if (authenticate.isAuthenticated()) {
+                return new ResponseEntity<>(service.generateToken(authRequest.getUsername()), HttpStatus.OK);
+            } else {
+                throw new RuntimeException("invalid access");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+        return new ResponseEntity<>("Token getting failed!", HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/validate")
-    public String validateToken(@RequestParam("token") String token) {
-        System.out.println("Called");
-        service.validateToken(token);
-        return "Token is valid";
+    public ResponseEntity<String> validateToken(@RequestParam("token") String token) {
+        try{
+            System.out.println("Called");
+            service.validateToken(token);
+            return new ResponseEntity<>("Token is valid", HttpStatus.OK);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<>("Token validation failed!", HttpStatus.BAD_REQUEST);
     }
 }
