@@ -57,11 +57,11 @@ public class TransactionService {
     }
 
     public List<TransactionDto> getByCustomerID(int customerId) {
-		// return transactionRepository.findByCustomer_id(customerId)
-        // .stream()
-        // .map(transaction -> transaction.toDto(TransactionDto.class))
-        // .collect(Collectors.toList());
-        return null;
+		 return transactionRepository.findAll().stream()
+        .filter(transaction -> transaction.getCustomer_id() == customerId)
+        .map(transaction -> transaction.toDto(TransactionDto.class))
+        .collect(Collectors.toList());
+       
 	}
 
     public List<TransactionDto> getCustomers() {

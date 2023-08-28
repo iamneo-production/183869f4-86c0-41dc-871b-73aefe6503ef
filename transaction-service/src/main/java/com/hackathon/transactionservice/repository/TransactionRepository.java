@@ -10,5 +10,5 @@ import com.hackathon.transactionservice.model.Transaction;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction,Integer> {
 
-    // List<Transaction> findByCustomer_id(int customerId);
+    //List<Transaction> findByCustomer_id(int customerId);
 }
