@@ -26,7 +26,7 @@ public class TransactionController {
 
     @PostMapping()
     public ResponseEntity<TransactionDto> add(@RequestBody TransactionDto transactionDto){
-       return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.transferAmount(transactionDto));
+       return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.saveTransaction(transactionDto));
     } 
 
     @GetMapping("{customerId}")
